@@ -15,10 +15,11 @@ COPY .tool-versions .tool-versions
 RUN git clone https://github.com/asdf-vm/asdf.git .asdf/ --branch v0.14.0
 
 # Install asdf plugins and awscurl
-RUN source .asdf/asdf.sh \
-  && asdf plugin add java https://github.com/halcyon/asdf-java.git \
-  && asdf plugin-add gradle https://github.com/rfrancis/asdf-gradle.git \
-  && asdf install
+RUN export ASDF_DIR=/root/.asdf && \
+    . $ASDF_DIR/asdf.sh && \
+    asdf plugin add java https://github.com/halcyon/asdf-java.git && \
+    asdf plugin add gradle https://github.com/rfrancis/asdf-gradle.git && \
+    asdf install
 
 ENV PATH="/root/.asdf/shims:/root/.asdf/bin:$PATH"
 
