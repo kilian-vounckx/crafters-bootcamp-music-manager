@@ -16,4 +16,4 @@ jobs:
           with:
               context: .
               file: Dockerfile
-              tags: ${{ steps.meta.outputs.REPO_NAME }}:latest
+              tags: ${{ github.event.repository.name }}:latest
