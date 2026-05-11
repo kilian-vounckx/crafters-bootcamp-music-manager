@@ -1,4 +1,4 @@
-FROM ubuntu:24.04@sha256:186072bba1b2f436cbb91ef2567abca677337cfc786c86e107d25b7072feef0c
+FROM ubuntu:24.04@sha256:186072bba1b2f436cbb91ef2567abca677337cfc786c86e107d25b7072feef0c AS builder
 
 SHELL ["/bin/bash", "-c"]
 WORKDIR "/root"
@@ -32,4 +32,7 @@ COPY src src
 # Build the jar
 RUN gradle bootJar
 
-CMD ["java", "-jar", "build/libs/demo-0.0.1-SNAPSHOT.jar"]
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /app
+COPY --from=builder /root/build/libs/demo-0.0.1-SNAPSHOT.jar app.jar
+CMD ["java", "-jar", "app.jar"]
