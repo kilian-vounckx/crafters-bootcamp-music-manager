@@ -29,3 +29,10 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: 806880856788.dkr.ecr.eu-north-1.amazonaws.com/kunlabora/music-manager:latest
+
+      - name: Deploy to ECS
+        run: |
+          aws ecs update-service \
+            --cluster music-manager \
+            --service music-manager \
+            --force-new-deployment
