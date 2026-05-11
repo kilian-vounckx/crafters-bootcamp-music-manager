@@ -2,51 +2,20 @@
 
 A simple music library REST API built with Spring Boot.
 
-## Features
-
-- CRUD operations for Artists and Songs
-- RESTful API endpoints
-- H2 embedded database (development)
-- PostgreSQL support (production)
-- Containerized with Podman
-
 ## Getting Started
 
-### Prerequisites
-- Java 25
-- Gradle
-- Podman (for containerization)
+### Dependencies
 
-### Run Locally
+- Install [asdf](https://asdf-vm.com/)
+- Run `asdf plugin add java`
+- Run `asdf plugin add gradle`
+- Run `asdf install`
 
-```bash
-./gradlew bootRun
-```
+### Running locally
 
-The application will start on `http://localhost:8080`
+- Run `gradle bootRun`
 
-### API Endpoints
+### Build & run in docker
 
-#### Artists
-- `GET /api/artists` - List all artists
-- `POST /api/artists` - Create a new artist
-- `GET /api/artists/{id}` - Get artist by ID
-- `PUT /api/artists/{id}` - Update artist
-- `DELETE /api/artists/{id}` - Delete artist
-
-#### Songs
-- `GET /api/songs` - List all songs
-- `POST /api/songs` - Create a new song
-- `GET /api/songs/{id}` - Get song by ID
-- `PUT /api/songs/{id}` - Update song
-- `DELETE /api/songs/{id}` - Delete song
-
-## Testing
-
-```bash
-./gradlew test
-```
-
-## Deployment
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for containerization and deployment instructions.
+- Run `docker build --tag music-library:latest .`
+- Run `docker run --port 8080:8080 music-manager:latest`
