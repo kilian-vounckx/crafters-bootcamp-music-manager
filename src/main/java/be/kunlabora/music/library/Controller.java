@@ -12,4 +12,9 @@ public class Controller {
     public String hello() {
         return "Hello World again!";
     }
+
+    @GetMapping("/test")
+    public String test() {
+        return "Test the auto deploy";
+    }
 }
