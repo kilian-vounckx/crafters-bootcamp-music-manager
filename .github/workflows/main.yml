@@ -34,5 +34,6 @@ jobs:
         run: |
           aws ecs update-service \
             --cluster music-manager \
-            --service music-manager \
-            --force-new-deployment
+            --service music-manager-task-service-sx9i4l45 \
+            --force-new-deployment \
+            --region ${{ secrets.AWS_REGION }}
