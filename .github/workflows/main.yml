@@ -37,3 +37,30 @@ jobs:
             --service music-man-task2-service-ul7lupge \
             --force-new-deployment \
             --region ${{ secrets.AWS_REGION }}
+
+      - name: Wait for ECS deployment to stabilize
+        run: |
+          aws ecs wait services-stable \
+            --cluster music-man-cluster \
+            --services music-man-task2-service-ul7lupge \
+            --region ${{ secrets.AWS_REGION }}
+          echo "✅ New tasks are running, old tasks are stopped"
+
+      - name: Verify health endpoint
+        run: |
+          URL="music-man-alb-1700087534.eu-north-1.elb.amazonaws.com"
+          MAX_ATTEMPTS=10
+          INTERVAL=5
+          
+          for i in $(seq 1 $MAX_ATTEMPTS); do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL")
+            if [ "$STATUS" = "200" ]; then
+              echo "✅ Health check passed"
+              exit 0
+            fi
+            echo "⏳ Got HTTP $STATUS, retrying in ${INTERVAL}s..."
+            sleep $INTERVAL
+          done
+          
+          echo "❌ Health check failed after stabilization"
+          exit 1
