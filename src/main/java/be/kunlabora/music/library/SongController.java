@@ -22,21 +22,21 @@ public class SongController {
     @GetMapping
     public List<SongResponseDTO> getAllSongs() {
         return songRepository.findAll().stream()
-            .map(this::entityToResponseDTO)
+            .map(SongResponseDTO::fromEntity)
             .toList();
     }
 
     @PostMapping
     public ResponseEntity<SongResponseDTO> createSong(@RequestBody CreateSongDTO dto) {
-        var entity = new SongEntity(dto.getTitle(), dto.getArtist(), dto.getAlbum(), dto.getDurationInSeconds());
+        var entity = new SongEntity(dto.title(), dto.artist(), dto.album(), dto.durationInSeconds());
         var saved = songRepository.save(entity);
-        return ResponseEntity.status(HttpStatus.CREATED).body(entityToResponseDTO(saved));
+        return ResponseEntity.status(HttpStatus.CREATED).body(SongResponseDTO.fromEntity(saved));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<SongResponseDTO> getSongById(@PathVariable UUID id) {
         return songRepository.findById(id)
-            .map(entity -> ResponseEntity.ok(entityToResponseDTO(entity)))
+            .map(entity -> ResponseEntity.ok(SongResponseDTO.fromEntity(entity)))
             .orElse(ResponseEntity.notFound().build());
     }
 
@@ -44,12 +44,12 @@ public class SongController {
     public ResponseEntity<SongResponseDTO> updateSong(@PathVariable UUID id, @RequestBody UpdateSongDTO dto) {
         return songRepository.findById(id)
             .map(entity -> {
-                entity.setTitle(dto.getTitle());
-                entity.setArtist(dto.getArtist());
-                entity.setAlbum(dto.getAlbum());
-                entity.setDurationInSeconds(dto.getDurationInSeconds());
+                entity.setTitle(dto.title());
+                entity.setArtist(dto.artist());
+                entity.setAlbum(dto.album());
+                entity.setDurationInSeconds(dto.durationInSeconds());
                 var updated = songRepository.save(entity);
-                return ResponseEntity.ok(entityToResponseDTO(updated));
+                return ResponseEntity.ok(SongResponseDTO.fromEntity(updated));
             })
             .orElse(ResponseEntity.notFound().build());
     }
@@ -62,15 +62,5 @@ public class SongController {
                 return ResponseEntity.noContent().<Void>build();
             })
             .orElse(ResponseEntity.notFound().build());
-    }
-
-    private SongResponseDTO entityToResponseDTO(SongEntity entity) {
-        return new SongResponseDTO(
-            entity.getId(),
-            entity.getTitle(),
-            entity.getArtist(),
-            entity.getAlbum(),
-            entity.getDurationInSeconds()
-        );
     }
 }
