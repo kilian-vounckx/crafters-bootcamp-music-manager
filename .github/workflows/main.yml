@@ -33,7 +33,7 @@ jobs:
       - name: Deploy to ECS
         run: |
           aws ecs update-service \
-            --cluster music-manager \
-            --service music-manager-task-service-sx9i4l45 \
+            --cluster music-man-cluster \
+            --service music-man-task2-service-ul7lupge \
             --force-new-deployment \
             --region ${{ secrets.AWS_REGION }}
