@@ -1,5 +1,7 @@
 package be.kunlabora.music.library.dto;
 
+import be.kunlabora.music.library.SongEntity;
+
 import java.util.UUID;
 
 public record SongResponseDTO(
@@ -9,4 +11,13 @@ public record SongResponseDTO(
     String album,
     int durationInSeconds
 ) {
+    public static SongResponseDTO fromEntity(SongEntity song) {
+        return new SongResponseDTO(
+            song.getId(),
+            song.getTitle(),
+            song.getArtist(),
+            song.getAlbum(),
+            song.getDurationInSeconds()
+        );
+    }
 }
