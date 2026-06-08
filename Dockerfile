@@ -19,6 +19,7 @@ RUN export ASDF_DIR=/root/.asdf && \
     . $ASDF_DIR/asdf.sh && \
     asdf plugin add java https://github.com/halcyon/asdf-java.git && \
     asdf plugin add gradle https://github.com/rfrancis/asdf-gradle.git && \
+    asdf plugin add nodejs && \
     asdf install
 
 ENV PATH="/root/.asdf/shims:/root/.asdf/bin:$PATH"
