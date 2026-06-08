@@ -48,7 +48,7 @@ jobs:
 
       - name: Verify health endpoint
         run: |
-          URL="music-man-alb-1700087534.eu-north-1.elb.amazonaws.com"
+          URL="music-man-alb-1700087534.eu-north-1.elb.amazonaws.com/api/hello"
           MAX_ATTEMPTS=10
           INTERVAL=5
           
