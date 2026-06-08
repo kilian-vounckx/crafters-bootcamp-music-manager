@@ -1,0 +1,82 @@
+### Song CRUD API Tests
+
+@baseUrl = http://localhost:8080/api/song
+
+### 1. Create a new song
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "title": "Bohemian Rhapsody",
+  "artist": "Queen",
+  "album": "A Night at the Opera",
+  "durationInSeconds": 354
+}
+
+### 2. Get all songs
+GET {{baseUrl}}
+
+### 3. Get a specific song by ID
+# Note: Replace {id} with the UUID returned from the create request above
+GET {{baseUrl}}/{id}
+
+### 4. Update a song
+# Note: Replace {id} with the UUID returned from the create request
+PUT {{baseUrl}}/{id}
+Content-Type: application/json
+
+{
+  "title": "Bohemian Rhapsody (Updated)",
+  "artist": "Queen",
+  "album": "A Night at the Opera",
+  "durationInSeconds": 360
+}
+
+### 5. Delete a song
+# Note: Replace {id} with the UUID returned from the create request
+DELETE {{baseUrl}}/{id}
+
+### 6. Verify song was deleted (should get 404)
+GET {{baseUrl}}/{id}
+
+### 7. Test 404 on non-existent song
+GET {{baseUrl}}/00000000-0000-0000-0000-000000000000
+
+### 8. Test PUT 404 on non-existent song
+PUT {{baseUrl}}/00000000-0000-0000-0000-000000000000
+Content-Type: application/json
+
+{
+  "title": "Test",
+  "artist": "Test",
+  "album": "Test",
+  "durationInSeconds": 100
+}
+
+### 9. Test DELETE 404 on non-existent song
+DELETE {{baseUrl}}/00000000-0000-0000-0000-000000000000
+
+### 10. Create multiple songs for list testing
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "title": "Stairway to Heaven",
+  "artist": "Led Zeppelin",
+  "album": "Led Zeppelin IV",
+  "durationInSeconds": 482
+}
+
+### 11. Create another song
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "title": "Imagine",
+  "artist": "John Lennon",
+  "album": "Imagine",
+  "durationInSeconds": 183
+}
+
+### 12. Get all songs to see the list
+GET {{baseUrl}}
