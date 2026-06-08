@@ -1,0 +1,111 @@
+:host {
+  display: block;
+  background-color: #121212;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.subtitle {
+  color: #b3b3b3;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.song-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.song-card {
+  background: #181818;
+  border-radius: 8px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.song-card:hover {
+  background: #282828;
+}
+
+.song-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artist {
+  font-weight: 400;
+  color: #b3b3b3;
+  margin: 0 0 0.25rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.album {
+  color: #b3b3b3;
+  font-size: 0.85rem;
+  margin: 0 0 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.duration {
+  color: #6a6a6a;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.empty {
+  color: #b3b3b3;
+  font-style: italic;
+}
+
+.add-song-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn-add {
+  background: #1db954;
+  color: #000;
+  border: none;
+  border-radius: 500px;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.05em;
+}
+
+.btn-add:hover {
+  background: #1ed760;
+  transform: scale(1.04);
+}

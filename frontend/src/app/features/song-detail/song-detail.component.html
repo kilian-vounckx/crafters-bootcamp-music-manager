@@ -1,0 +1,33 @@
+<div class="page">
+  <button class="back-button" (click)="goBackToLibrary()">
+    ← Back to library
+  </button>
+
+  @if (song(); as s) {
+    <div class="song-detail">
+      <div class="song-header">
+        <div class="song-cover">♪</div>
+        <div class="song-info">
+          <p class="label">Song</p>
+          <h1>{{ s.title }}</h1>
+          <p class="meta">{{ s.artist }} • {{ s.album }} • {{ Math.floor(s.durationInSeconds / 60) }}:{{ (s.durationInSeconds % 60).toString().padStart(2, '0') }}</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" (click)="null">Edit</button>
+        <button class="btn btn-danger" popovertarget="delete-popover">Delete</button>
+
+        <div id="delete-popover" popover class="delete-popover">
+          <p>Are you sure you want to delete <strong>{{ song()?.title }}</strong>?</p>
+          <div class="popover-actions">
+            <button class="btn btn-danger" (click)="deleteSong()">Yes, delete</button>
+            <button class="btn btn-secondary" popovertarget="delete-popover" popovertargetaction="hide">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <p class="loading">Loading...</p>
+  }
+</div>

@@ -1,0 +1,25 @@
+<div class="page">
+  <header class="page-header">
+    <h1>Music Library</h1>
+    <p class="subtitle">{{ nrOfSongs() }} song@if(nrOfSongs() !== 1){s} in your library</p>
+  </header>
+
+  <div class="song-grid">
+    @for (song of songs(); track song.id) {
+      <div class="song-card" [routerLink]="'/songs/' + song.id">
+        <h2>{{ song.title }}</h2>
+        <p class="artist">{{ song.artist }}</p>
+        <p class="album">{{ song.album }}</p>
+        <p class="duration">{{ Math.floor(song.durationInSeconds / 60) }}:{{ (song.durationInSeconds % 60).toString().padStart(2, '0') }}</p>
+      </div>
+    }
+
+    @empty {
+      <p class="empty">No songs found.</p>
+    }
+  </div>
+
+  <div class="add-song-container">
+    <button class="btn-add" (click)="null">+ Add song</button>
+  </div>
+</div>

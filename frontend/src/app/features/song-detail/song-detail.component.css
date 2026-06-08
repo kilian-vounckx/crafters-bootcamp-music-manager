@@ -1,0 +1,161 @@
+:host {
+  display: block;
+  background-color: #121212;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #b3b3b3;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.back-button:hover {
+  color: #fff;
+}
+
+.song-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.song-header {
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+  padding: 2rem;
+  background: linear-gradient(transparent, rgba(0,0,0,0.5)), linear-gradient(135deg, #1a1a2e, #16213e);
+  border-radius: 8px;
+}
+
+.song-cover {
+  width: 150px;
+  height: 150px;
+  background: #282828;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  flex-shrink: 0;
+}
+
+.song-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #b3b3b3;
+  margin: 0;
+}
+
+.song-info h1 {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.meta {
+  color: #b3b3b3;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 500px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: #1db954;
+  color: #000;
+}
+
+.btn-primary:hover {
+  background: #1ed760;
+  transform: scale(1.04);
+}
+
+.btn-danger {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #727272;
+}
+
+.btn-danger:hover {
+  border-color: #fff;
+  transform: scale(1.04);
+}
+
+.loading {
+  color: #b3b3b3;
+  font-style: italic;
+}
+
+.delete-popover {
+  background: #282828;
+  color: #fff;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 400px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+.delete-popover p {
+  margin: 0 0 1.5rem;
+}
+
+.popover-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #727272;
+}
+
+.btn-secondary:hover {
+  border-color: #fff;
+  transform: scale(1.04);
+}
+
+::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
